@@ -65,4 +65,4 @@ def viewHomepage(request): # Homepage handler
         content['username']='游客'
     return render(request, 'home_page/home.html',content)
 def viewAboutpage(request): # About page handler
-    pass
+    return 1

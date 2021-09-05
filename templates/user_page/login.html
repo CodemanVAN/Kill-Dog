@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kill Dog足球在线分析平台</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container-fiuled" style="width: 100%;">
+        <div class="row"></div>
+        <div class="row">
+            <div class="col">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="#">导航栏</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="/">主页</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">关于本页</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link disabled" href="#" tabindex="-1"
+                                        aria-disabled="true">Kill Dog</a>
+                                </li>
+                            </ul>
+                            <form class="d-flex">
+                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                <button class="btn btn-outline-success" type="submit">查</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{username}}
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">我的</a></li>
+                            <li><a class="dropdown-item" href="/login">登陆</a></li>
+                            <li><a class="dropdown-item" href="/logout">登出</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/login">注册</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        {% ifnotequal res None%}
+        <div {% ifequal status 0 %} class="alert alert-danger text-center" role="alert" {% else %} class="alert alert-success" role="alert" {% endifequal %}>
+            {{res}}
+        </div>
+        {% endifnotequal %}
+        <div>
+        <div class="col-sm-3"></div>
+        <div class="card text-center">
+            <div class="card-header">
+                期待你的加入
+            </div>
+            <form action="./" method="post">
+                {% csrf_token %}
+            <div class="card-body">
+                <h5 class="card-title">请你填写下面信息</h5>
+            <div class="col center-block">
+                <div class="list-group" id="list-tab" role="tablist">
+                <a class="btn-sm list-group-item list-group-item-action active " id="list-home-list" data-bs-toggle="list" href="#list-home" role="tab" aria-controls="list-home">登陆</a>
+                <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list" href="#list-profile" role="tab" aria-controls="list-profile">注册</a>
+                </div>
+            </div>
+            <div class="container">
+            <div class="center-block">
+                <div class="tab-content center-block" id="nav-tabContent">
+                <div class="tab-pane fade show active text-center" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+                <div class="mb-3 row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label" >用户名</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="staticEmail" name='username' value="">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">密码</label>
+                    <div class="col-sm-10">
+                    <input type="password" class="form-control" id="inputPassword" name="password">
+                    </div>
+                </div>
+                </div>
+                <div class="tab-pane fade text-center center-block col-md-offset-2" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+                    <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">用户名</span>
+                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" name="reusername">
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="输入你的密码" aria-label="输入你的密码" name='repassword1'>
+                        <span class="input-group-text">密码</span>
+                        <input type="text" class="form-control" placeholder="再次输入你的密码" aria-label="再次输入你的密码" name='repassword2'>
+                    </div>
+                    <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon2">邮箱</span>
+                    <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2" name='reemail'> 
+                    </div>
+
+                    <label for="basic-url" class="form-label">邀请码</label>
+                    <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon3">选填</span>
+                    <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name='invitecode'> 
+                    </div>
+
+                    <div class="input-group mb-3">
+                    <span class="input-group-text">$</span>
+                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                    <span class="input-group-text">.00</span>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">请输入{{catpth}}的运算结果</label>
+                        <div class="col-sm-10">
+                        <input type="number" class="form-control" id="inputPassword" name="answer">
+                    </div>
+                    <button type='submit' class="btn btn-primary">确定！</button>
+                </div>
+                </div>
+            </div>
+            </div>
+        </form> 
+            <div class="card-footer text-muted text-center">
+                Grace Under Pressure.
+            </div>
+        </div>
+        <div class="col-sm-3"></div>
+
+
+
+
+        <div class="row navbar-fixed-bottom" style="
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+">
+            <div class="col-sm text-center">
+                <p>You can use the mark tag to <mark>highlight</mark> text.</p>
+            </div>
+            <div class="col-sm text-center">
+                <p>You can use the mark tag to <mark>highlight</mark> text.</p>
+                <!-- Button trigger modal -->
+            </div>
+            <div class="col-sm text-center">
+                <p>You can use the mark tag to <mark>highlight</mark> text.</p></div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+        </script>
+
+</body>
+
+</html>

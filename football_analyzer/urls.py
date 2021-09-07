@@ -17,11 +17,13 @@ from django.contrib import admin
 from django.urls import path
 from home import views as homeViews
 from my_user import views as myUserViews
+from price import views as myPriceViews
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',homeViews.viewHomepage,name='Homepage'),
     path('user/',myUserViews.viewUserdata,name='Userpage'),
     path('login/',myUserViews.viewUserlogin,name='Userlogin'),
     path('about/',homeViews.viewAboutpage,name='Aboutpage'),
-    path('logout/',myUserViews.logout,name='logout')
+    path('logout/',myUserViews.logout,name='Logout'),
+    path('price/',myPriceViews.viewPrice,name='Price'),
 ]

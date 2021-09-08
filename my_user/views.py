@@ -52,6 +52,9 @@ def checkRegistration(request):
             newUser.userHost=ip
             newUser.userEmail=request.POST.get("reemail")
             newUser.userBoss=request.POST.get("invitecode")
+            boss=User.objects.filter(username=request.POST.get("invitecode")).first()
+            boss.userAnalyzeNum+=10
+            boss.save()
             newUser.save()
             res ='注册成功'
             return res,1

@@ -56,7 +56,11 @@
                 </nav>
             </div>
         </div>
-
+        {% if res %}
+            <div {% ifequal res.1 0 %} class="alert alert-danger" role="alert" {% else %} class="alert alert-success" role="alert" {% endifequal %}>
+                充值结果：{{res.0}}
+            </div>
+        {% endif %}
         <div class="container">
             <div class="row">
               <div class="col">
@@ -106,7 +110,17 @@
               </div>
             </div>
           </div>
-
+          <div class="container ">
+          <div class="col">
+            <form action="./" method="POST" class="form-horizontal">
+              {% csrf_token %}
+          <div class="input-group mb-3 ">
+            <input type="text" class="form-control text-center" placeholder="这里输入你购买的激活码" name="key" aria-describedby="button-addon2">
+            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">激活</button>
+          </div>
+        </form>
+        </div>
+      </div>
 
 
 

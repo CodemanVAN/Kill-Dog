@@ -19,3 +19,4 @@ class History(models.Model):
     rcecordPan=models.CharField(max_length=10)
     recordResult=models.CharField(max_length=10)
     recordTime=models.DateTimeField(default=datetime.now)
+
